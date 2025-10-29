@@ -1,0 +1,98 @@
+Build a full-stack web application called **Florida Highway Patrol - Troop Management System** that runs fully inside Replit.
+
+🧩 TECH STACK:
+- Frontend: React + TypeScript + Vite
+- Styling: Tailwind CSS
+- Backend: Express.js (Node.js)
+- Database: PostgreSQL (use Prisma or Sequelize)
+- Shared Types: TypeScript types shared between frontend and backend
+- Deployment: Use `npm run dev` to start both frontend and backend together on Replit
+
+⚙️ FUNCTIONALITY:
+This system is for managing a virtual highway patrol department. It must include:
+
+1. **Trooper Registration & Login**
+   - A form where new troopers register (name, badge number, email, password).
+   - Login with email/password.
+   - Store users in the database.
+
+2. **Supervisor Dashboard**
+   - Supervisors can log in with a special role.
+   - See pending trooper profiles for approval.
+   - Approve or deny applications using modals.
+
+3. **Report System**
+   - Troopers can submit incident reports.
+   - Supervisors can view, approve, or reject reports.
+   - Each report has fields: title, description, date, and status.
+
+4. **Strike Management**
+   - Supervisors can issue strikes to troopers.
+   - Each strike includes reason, date, and supervisor name.
+   - Display strikes on the trooper dashboard.
+
+5. **Analytics Dashboard**
+   - Show total reports, pending approvals, active troopers, and total strikes.
+   - Use charts or cards styled with Tailwind.
+
+6. **Profile Editing**
+   - Troopers can edit their profile (photo, rank, etc.).
+   - Supervisors can view and modify trooper data.
+
+🧱 PROJECT STRUCTURE:
+/
+├── package.json
+├── vite.config.ts
+├── tailwind.config.js
+├── tsconfig.json
+├── postcss.config.js
+├── server/
+│   ├── index.ts          # Express backend entry
+│   ├── routes/
+│   │   ├── auth.ts
+│   │   ├── reports.ts
+│   │   ├── strikes.ts
+│   │   └── supervisor.ts
+│   └── prisma/
+│       └── schema.prisma # Database schema
+├── src/
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   ├── components/
+│   │   ├── LoginButton.tsx
+│   │   ├── ProfileEditor.tsx
+│   │   ├── ReportForm.tsx
+│   │   ├── ReportStats.tsx
+│   │   ├── StrikeManager.tsx
+│   │   ├── SupervisorPendingProfiles.tsx
+│   │   └── SupervisorReportReview.tsx
+│   ├── pages/
+│   │   ├── Home.tsx
+│   │   ├── Dashboard.tsx
+│   │   └── Supervisor.tsx
+│   └── shared/
+│       └── types.ts
+└── migrations/
+    ├── 1_init.sql
+    ├── 2_reports.sql
+    ├── 3_strikes.sql
+
+🧩 UI REQUIREMENTS:
+- Clean, modern Tailwind design.
+- Use cards, modals, and grid layouts.
+- Use a navbar with links: Home, Dashboard, Supervisor.
+- Use buttons labeled “Submit Report”, “Approve”, “Deny”, “Issue Strike”.
+
+💾 DATABASE SCHEMA (simplified):
+- Users: id, name, email, password, role (trooper/supervisor)
+- Reports: id, userId, title, description, date, status
+- Strikes: id, userId, reason, date
+- Approvals: id, userId, approvedBy, status, notes
+
+🚀 RUN CONFIGURATION:
+- `npm run dev` should start both the Vite frontend and Express backend.
+- Use a proxy (Vite → Express on port 5000).
+- Include Tailwind setup and working TypeScript configuration.
+
+When done, make sure the app compiles, runs in Replit’s preview, and the Run button automatically launches the development server.
